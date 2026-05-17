@@ -215,13 +215,18 @@
     .btn-whatsapp { background: #25D366; color: #fff; border: none; padding: 12px; border-radius: 8px; font-size: 0.95rem; cursor: pointer; font-weight: 600; font-family: inherit; transition: 0.3s; width: 100%; margin-top: auto; }
     .btn-whatsapp:hover { background: #1ebe5d; }
 
-    /* Our Story Section */
-    .story-section { display: flex; align-items: center; gap: 40px; background: var(--white); border-radius: 30px; padding: 50px; margin: 60px 0; box-shadow: var(--shadow); }
-    .story-content { flex: 1; }
-    .story-content h2 { font-size: 2.5rem; color: var(--dark); margin-top: 0; }
-    .story-content p { font-size: 1.1rem; color: #555; margin-bottom: 20px; }
-    .story-image { flex: 1; border-radius: 20px; overflow: hidden; }
-    .story-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* Our Story Section (Text Only) */
+    .story-section { 
+      background: var(--white); 
+      border-radius: 30px; 
+      padding: 60px 40px; 
+      margin: 60px auto; 
+      box-shadow: var(--shadow); 
+      text-align: center; 
+      max-width: 900px; 
+    }
+    .story-content h2 { font-size: 2.5rem; color: var(--dark); margin-top: 0; margin-bottom: 20px; }
+    .story-content p { font-size: 1.15rem; color: #555; margin-bottom: 20px; line-height: 1.8; }
 
     /* Certification Section */
     .cert-section { background: var(--white); border-radius: 30px; padding: 60px 40px; margin: 60px 0; text-align: center; box-shadow: var(--shadow); border: 2px dashed var(--secondary); }
@@ -231,6 +236,28 @@
     .fassai-badge img { height: 60px; filter: grayscale(1); opacity: 0.7; transition: 0.3s; }
     .cert-card:hover img { filter: grayscale(0); opacity: 1; }
     .license-number { font-family: monospace; background: #eee; padding: 5px 10px; border-radius: 5px; font-weight: bold; color: var(--dark); }
+
+    /* Report Link Styling */
+    .report-link {
+        color: var(--dark);
+        text-decoration: none;
+        border-bottom: 2px dashed var(--primary);
+        transition: color 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .report-link:hover {
+        color: var(--primary);
+        border-bottom: 2px solid var(--primary);
+    }
+    .click-hint {
+        font-size: 0.8rem;
+        color: var(--primary);
+        margin-top: -10px;
+        margin-bottom: 15px;
+        font-style: italic;
+    }
 
     /* Customer Reviews */
     .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 60px; }
@@ -261,7 +288,7 @@
     /* Responsive Design */
     @media (max-width: 992px) {
       .products-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
-      .story-section { flex-direction: column; padding: 30px; }
+      .story-section { padding: 30px; }
       .nav-links { display: none; } /* Hide links on mobile, keep clean header */
       .top-bar { padding: 20px; justify-content: center; } /* Center logo on mobile */
       .big-logo { height: 80px; }
@@ -332,12 +359,11 @@
 
   <!-- TOP BAR WITH BIG LOGO -->
   <div class="top-bar">
-      <!-- Added big logo image fixed on the left -->
       <img src="images/LOGO.png" alt="Arka Organic Life" class="big-logo" onerror="this.src='https://via.placeholder.com/200x100?text=ARKA+LIFE'">
       <div class="nav-links">
           <a href="#shop">Shop Honey</a>
           <a href="#story">Our Story</a>
-          <a href="#reviews">Reviews</a>
+          <a href="#certifications">Lab Report</a>
           <a href="https://wa.me/919235162284" target="_blank">Contact Us</a>
       </div>
   </div>
@@ -411,7 +437,7 @@
   <span class="category-label">Wild & Premium Series</span>
   <section class="products-grid">
     <div class="product-card">
-      <img src="images/honey1.jpeg" alt="Wild Jungle">
+      <img src="images/Leechi.jpeg" alt="Wild Jungle">
       <h3>Wild Lichi Honey</h3>
       <div class="price-tag" id="price-5">₹1600</div>
       <select class="quantity-select" id="qty-5" onchange="updatePrice(5)">
@@ -423,7 +449,7 @@
     </div>
 
     <div class="product-card">
-      <img src="images/honey2.jpeg" alt="Crystal">
+      <img src="images/Jaamun.jpeg" alt="Crystal">
       <h3>Jaamun Honey </h3>
       <div class="price-tag" id="price-6">₹2800</div>
       <select class="quantity-select" id="qty-6" onchange="updatePrice(6)">
@@ -436,7 +462,7 @@
 
     <div class="product-card">
       <span class="badge bestseller">Rare</span>
-      <img src="images/honey3.jpeg" alt="Ajwain">
+      <img src="images/Ajwain.jpeg" alt="Ajwain">
       <h3>Ajwain Honey</h3>
       <div class="price-tag" id="price-7">₹1700</div>
       <select class="quantity-select" id="qty-7" onchange="updatePrice(7)">
@@ -449,7 +475,7 @@
 
     <div class="product-card">
       <span class="badge">Medicinal</span>
-      <img src="images/honey4.jpeg" alt="Sidr">
+      <img src="images/Neem.jpeg" alt="Sidr">
       <h3>Neem Honey </h3>
       <div class="price-tag" id="price-8">₹3200</div>
       <select class="quantity-select" id="qty-8" onchange="updatePrice(8)">
@@ -461,17 +487,64 @@
     </div>
   </section>
 
-  <!-- Our Story Section -->
+  <!-- Gifts & Candles Section -->
+  <span class="category-label">Gifts & Beeswax Candles</span>
+  <section class="products-grid">
+    <div class="product-card">
+      <span class="badge">Eco-Friendly</span>
+      <img src="images/candel1.jpeg" alt="Pure Beeswax Pillar Candle">
+      <h3>Beeswax Pillar Candle</h3>
+      <div class="price-tag" id="price-9">₹499</div>
+      <select class="quantity-select" id="qty-9" onchange="updatePrice(9)">
+        <option value="1 Piece" data-price="499" selected>1 Piece</option>
+        <option value="Set of 2" data-price="899">Set of 2</option>
+      </select>
+      <button class="btn-whatsapp" onclick="sendOrder('Beeswax Pillar Candle', 'qty-9')">Buy on WhatsApp</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/candel2.jpeg" alt="Beeswax Tea Lights">
+      <h3>Beeswax Tea Lights</h3>
+      <div class="price-tag" id="price-10">₹299</div>
+      <select class="quantity-select" id="qty-10" onchange="updatePrice(10)">
+        <option value="Pack of 6" data-price="299" selected>Pack of 6</option>
+        <option value="Pack of 12" data-price="550">Pack of 12</option>
+      </select>
+      <button class="btn-whatsapp" onclick="sendOrder('Beeswax Tea Lights', 'qty-10')">Buy on WhatsApp</button>
+    </div>
+
+    <div class="product-card">
+      <span class="badge bestseller">Ideal Gift</span>
+      <img src="images/candel3.jpeg" alt="Honey Gift Hamper">
+      <h3>Premium Gift Hamper</h3>
+      <div class="price-tag" id="price-11">₹1200</div>
+      <select class="quantity-select" id="qty-11" onchange="updatePrice(11)">
+        <option value="Box of 3 (250g)" data-price="1200" selected>Box of 3 (250g)</option>
+        <option value="Box of 4 (250g)" data-price="1550">Box of 4 (250g)</option>
+      </select>
+      <button class="btn-whatsapp" onclick="sendOrder('Premium Gift Hamper', 'qty-11')">Buy on WhatsApp</button>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">Events</span>
+      <img src="images/candel1.jpeg" alt="Mini Honey Favors">
+      <h3>Mini Honey Favors</h3>
+      <div class="price-tag" id="price-12">₹1500</div>
+      <select class="quantity-select" id="qty-12" onchange="updatePrice(12)">
+        <option value="Pack of 10 (50g)" data-price="1500" selected>Pack of 10 (50g)</option>
+        <option value="Pack of 20 (50g)" data-price="2800">Pack of 20 (50g)</option>
+      </select>
+      <button class="btn-whatsapp" onclick="sendOrder('Mini Honey Favors', 'qty-12')">Buy on WhatsApp</button>
+    </div>
+  </section>
+
+  <!-- Our Story Section (Text Only) -->
   <section class="story-section" id="story">
       <div class="story-content">
           <h2>From Deep Forests to Your Table</h2>
           <p>At <strong>Arka Organic Life</strong>, we believe honey should be consumed exactly as nature intended—raw, unpasteurized, and completely free of chemicals.</p>
           <p>We work directly with tribal honey hunters and ethical beekeepers across India to source rare, medicinal, and single-flower honey. Because we do not heat or treat our honey, all the natural enzymes, pollen, and antioxidants remain intact.</p>
           <p><em>Experience the real taste of nature with every spoonful!</em></p>
-      </div>
-      <div class="story-image">
-          <!-- Placeholder image, you can replace with a real farm/beehive image -->
-          <img src="https://images.unsplash.com/photo-1587049352847-8d4e8941552e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Beekeeper Harvesting Honey">
       </div>
   </section>
 
@@ -501,27 +574,42 @@
   </section>
 
   <!-- Certifications -->
-  <section class="cert-section">
+  <section class="cert-section" id="certifications">
       <div class="section-title">
           <h2>Trust & Certification</h2>
           <div class="underline"></div>
       </div>
       <div class="cert-grid">
+          
+          <!-- FSSAI CERTIFICATE CARD -->
           <div class="cert-card">
               <div class="fassai-badge">
                   <img src="images/fssai.png" alt="FSSAI Certified" onerror="this.style.display='none'; this.parentNode.innerHTML='<b>FSSAI</b>'">
               </div>
-              <h4>Food Safety Standard</h4>
+              <h4>
+                  <a href="images/fssai-certificate.jpg" target="_blank" class="report-link">
+                      Food Safety Standard 📄
+                  </a>
+              </h4>
+              <p class="click-hint">(Click to view FSSAI License)</p>
               <p>Our products are packed under strict hygienic conditions as per FSSAI norms.</p>
               <p>License No: <span class="license-number"> 22726102000166</span></p>
           </div>
+
+          <!-- HONEY LAB REPORT CARD -->
           <div class="cert-card">
               <div class="fassai-badge">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="60" height="60" fill="#f77f00"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
               </div>
-              <h4>Lab Tested Purity</h4>
+              <h4>
+                  <a href="images/honey-report.jpg" target="_blank" class="report-link">
+                      Lab Tested Purity 📄
+                  </a>
+              </h4>
+              <p class="click-hint">(Click to view NABL Report)</p>
               <p>Every batch is tested for C3-C4 sugars, moisture levels, and antibiotics.</p>
           </div>
+
       </div>
   </section>
 
@@ -600,7 +688,8 @@ Please confirm my order and share payment details.`;
   }
 
   window.onload = function() {
-    for(let i=1; i<=8; i++) updatePrice(i);
+    // Updated loop to 12 to include the new Gift & Candle products
+    for(let i=1; i<=12; i++) updatePrice(i);
   }
 </script>
 
